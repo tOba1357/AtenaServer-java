@@ -1,0 +1,24 @@
+@import models.entity.Member
+@(member: Member)
+
+@main(member.name) {
+    <div class="container">
+        <table class="table table-bordered">
+            <tr></tr>
+            <tr>
+                <th>名前</th><th>@member.name</th>
+            </tr>
+            <tr>
+                <th>状態</th><th>@member.state</th>
+            </tr>
+            @if(member.group != null) {
+                <tr>
+                    <th>グループ名</th><th>@member.group.name</th>
+                </tr>
+                <tr>
+                    <th>管理者</th><th>@member.author</th>
+                </tr>
+            }
+        </table>
+    </div>
+}

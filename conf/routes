@@ -1,0 +1,25 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# App Sample
+GET         /syusseki/sample/state               controllers.SampleController.getSampleState()
+
+# App
+POST        /syusseki/signup                     controllers.SyussekiController.signup()
+POST        /syusseki/login                      controllers.SyussekiController.login()
+
+POST        /syusseki/group/serach               controllers.SyussekiController.searchGroup()
+POST        /syusseki/group/register             controllers.SyussekiController.registerGroup()
+POST        /syusseki/group/add_member           controllers.SyussekiController.addMemberToGroup()
+POST        /syusseki/group/state                controllers.SyussekiController.getGroupMemberState()
+POST        /syusseki/member/update/state        controllers.SyussekiController.updateState()
+
+
+# Web
+GET         /syusseki/web/user/list              controllers.WebController.renderUserList()
+GET         /syusseki/web/group/list             controllers.WebController.renderGroupList()
+GET         /syusseki/web/member/info/:id        controllers.WebController.renderMemberInfo(id:Int)
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /syusseki/assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

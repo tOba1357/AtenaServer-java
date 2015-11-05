@@ -1,0 +1,41 @@
+@import models.entity.Group
+@(groupList: java.util.List[Group])
+
+@tableHeader() = {
+    <tr>
+        <th>#</th>
+        <th>groupId</th>
+        <th>name</th>
+        <th>緯度経度</th>
+        <th>メンバーリスト</th>
+    </tr>
+}
+
+@groupInfo(group: Group) = {
+    <tr>
+        <th>@group.id</th>
+        <th>@group.groupId</th>
+        <th>@group.name</th>
+        <th>@group.latitude, @group.longitude</th>
+        <th>
+        @for(member <- group.memberList) {
+            <a href="@routes.WebController.renderMemberInfo(member.id)">@member.name</a>
+        }
+        </th>
+    </tr>
+}
+
+@main("グループリスト") {
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">ユーザリスト</div>
+            <table class="table">
+                <thead>
+                @tableHeader()
+                </thead>
+                @groupList.map(groupInfo)
+            </table>
+        </div>
+    </div>
+}
+

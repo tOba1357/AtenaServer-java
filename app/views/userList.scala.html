@@ -1,0 +1,29 @@
+@import models.entity.User
+@import java.util
+@(userList: java.util.List[User])
+
+@main("ユーザリスト") {
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">ユーザリスト</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>userId</th>
+                        <th>name</th>
+                    </tr>
+                </thead>
+                @for(user <- userList) {
+                    <tbody>
+                        <tr>
+                            <th>@user.id</th>
+                            <th>@user.userId</th>
+                            <th><a href="@routes.WebController.renderMemberInfo(user.id)">@user.memberList.get(0).name</a></th>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        </div>
+    </div>
+}
